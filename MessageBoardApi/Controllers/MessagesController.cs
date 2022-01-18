@@ -20,8 +20,8 @@ namespace MessageBoardApi.Controllers
     }
 
     [HttpGet]
-public ActionResult<IEnumerable<Message>> Get(string group, DateTime datePosted, string content)
-{
+    public ActionResult<IEnumerable<Message>> Get(string group, string content, bool allGroups)
+    {
     var query = _db.Messages.AsQueryable();
 
     if (group != null)
@@ -29,18 +29,26 @@ public ActionResult<IEnumerable<Message>> Get(string group, DateTime datePosted,
     query = query.Where(entry => entry.Group == group);
     }
 
-    if (datePosted != null)
-    {
-    query = query.Where(entry => entry.DatePosted == datePosted);
-    }
+    // if (datePosted != null)
+    // {
+    // query = query.Where(entry => entry.DatePosted == datePosted);
+    // }
 
     if (content != null)
     {
     query = query.Where(entry => entry.Content == content);
     }
 
+    if (allGroups) 
+    {
+      query = query.Distinct();
+      query = from entry in query 
+          orderby entry.Group 
+          select entry;
+    }
+
     return query.ToList();
-}
+    }
 
     [HttpPost]
     public async Task<ActionResult<Message>> Post(Message message)

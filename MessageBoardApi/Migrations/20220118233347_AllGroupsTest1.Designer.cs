@@ -3,14 +3,16 @@ using System;
 using MessageBoardApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MessageBoardApi.Migrations
 {
     [DbContext(typeof(MessageBoardApiContext))]
-    partial class MessageBoardApiContextModelSnapshot : ModelSnapshot
+    [Migration("20220118233347_AllGroupsTest1")]
+    partial class AllGroupsTest1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,14 +63,6 @@ namespace MessageBoardApi.Migrations
                             DatePosted = new DateTime(2021, 12, 25, 13, 0, 0, 0, DateTimeKind.Unspecified),
                             Group = "Alpha",
                             UserName = "user2"
-                        },
-                        new
-                        {
-                            MessageId = 3,
-                            Content = "content3",
-                            DatePosted = new DateTime(2020, 12, 25, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            Group = "Zeta",
-                            UserName = "user3"
                         });
                 });
 #pragma warning restore 612, 618

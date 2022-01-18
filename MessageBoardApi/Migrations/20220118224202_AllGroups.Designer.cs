@@ -3,14 +3,16 @@ using System;
 using MessageBoardApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MessageBoardApi.Migrations
 {
     [DbContext(typeof(MessageBoardApiContext))]
-    partial class MessageBoardApiContextModelSnapshot : ModelSnapshot
+    [Migration("20220118224202_AllGroups")]
+    partial class AllGroups
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,7 +53,7 @@ namespace MessageBoardApi.Migrations
                             MessageId = 1,
                             Content = "content1",
                             DatePosted = new DateTime(2022, 1, 18, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Group = "Beta",
+                            Group = "Group1",
                             UserName = "user1"
                         },
                         new
@@ -59,16 +61,8 @@ namespace MessageBoardApi.Migrations
                             MessageId = 2,
                             Content = "content2",
                             DatePosted = new DateTime(2021, 12, 25, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            Group = "Alpha",
+                            Group = "Group2",
                             UserName = "user2"
-                        },
-                        new
-                        {
-                            MessageId = 3,
-                            Content = "content3",
-                            DatePosted = new DateTime(2020, 12, 25, 13, 0, 0, 0, DateTimeKind.Unspecified),
-                            Group = "Zeta",
-                            UserName = "user3"
                         });
                 });
 #pragma warning restore 612, 618
