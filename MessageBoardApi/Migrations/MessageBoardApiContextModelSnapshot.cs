@@ -64,8 +64,6 @@ namespace MessageBoardApi.Migrations
 
                     b.HasKey("MessageId");
 
-                    b.HasIndex("GroupId");
-
                     b.ToTable("Messages");
 
                     b.HasData(
@@ -117,22 +115,6 @@ namespace MessageBoardApi.Migrations
                             GroupId = 1,
                             UserName = "user3"
                         });
-                });
-
-            modelBuilder.Entity("MessageBoardApi.Models.Message", b =>
-                {
-                    b.HasOne("MessageBoardApi.Models.Group", "Group")
-                        .WithMany("Messages")
-                        .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Group");
-                });
-
-            modelBuilder.Entity("MessageBoardApi.Models.Group", b =>
-                {
-                    b.Navigation("Messages");
                 });
 #pragma warning restore 612, 618
         }

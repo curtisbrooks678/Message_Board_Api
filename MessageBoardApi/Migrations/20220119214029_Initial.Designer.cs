@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MessageBoardApi.Migrations
 {
     [DbContext(typeof(MessageBoardApiContext))]
-    [Migration("20220119193328_AllGroupsTest4")]
-    partial class AllGroupsTest4
+    [Migration("20220119214029_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,8 +27,8 @@ namespace MessageBoardApi.Migrations
 
                     b.Property<string>("GroupName")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20) CHARACTER SET utf8mb4");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4");
 
                     b.HasKey("GroupId");
 
@@ -65,8 +65,6 @@ namespace MessageBoardApi.Migrations
                         .HasColumnType("varchar(20) CHARACTER SET utf8mb4");
 
                     b.HasKey("MessageId");
-
-                    b.HasIndex("GroupId");
 
                     b.ToTable("Messages");
 
@@ -119,22 +117,6 @@ namespace MessageBoardApi.Migrations
                             GroupId = 1,
                             UserName = "user3"
                         });
-                });
-
-            modelBuilder.Entity("MessageBoardApi.Models.Message", b =>
-                {
-                    b.HasOne("MessageBoardApi.Models.Group", "Group")
-                        .WithMany("Messages")
-                        .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Group");
-                });
-
-            modelBuilder.Entity("MessageBoardApi.Models.Group", b =>
-                {
-                    b.Navigation("Messages");
                 });
 #pragma warning restore 612, 618
         }

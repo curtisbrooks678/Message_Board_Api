@@ -15,8 +15,10 @@ namespace MessageBoardApi.Models
     public string Content { get; set; }
     [Required]
     public DateTime DatePosted { get; set; }
+    [Required]
     public int GroupId { get; set; }
-    public virtual Group Group { get; set; }
+    // [Required]
+    // public Group Group { get; set; }
   }
 
 

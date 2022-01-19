@@ -20,15 +20,15 @@ namespace MessageBoardApi.Controllers
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<Message>> Get(string group, string content, bool allGroups)
+    public ActionResult<IEnumerable<Message>> Get(int groupId, string content)
     {
 
     var query = _db.Messages.AsQueryable();
 
-    // if (group != null)
-    // {
-    //   query = query.Where(entry => entry.Group == group);
-    // }
+    if (groupId != 0)
+    {
+      query = query.Where(entry => entry.GroupId == groupId);
+    }
 
     // if (datePosted != null)
     // {

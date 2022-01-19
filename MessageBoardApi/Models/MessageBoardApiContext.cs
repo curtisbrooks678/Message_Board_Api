@@ -27,8 +27,7 @@ namespace MessageBoardApi.Models
             new Message { GroupId = 1, MessageId = 4, UserName = "user3",  Content = "content3", DatePosted = new DateTime(2020, 12, 25, 13, 0, 0) },
             new Message { GroupId = 1, MessageId = 5, UserName = "user3",  Content = "content3", DatePosted = new DateTime(2020, 12, 25, 13, 0, 0) },
             new Message { GroupId = 1, MessageId = 6, UserName = "user3",  Content = "content3", DatePosted = new DateTime(2020, 12, 25, 13, 0, 0) }
-        );
+            );
         }
     }
-        
 }
