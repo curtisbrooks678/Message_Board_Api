@@ -3,14 +3,16 @@ using System;
 using MessageBoardApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MessageBoardApi.Migrations
 {
     [DbContext(typeof(MessageBoardApiContext))]
-    partial class MessageBoardApiContextModelSnapshot : ModelSnapshot
+    [Migration("20220119193328_AllGroupsTest4")]
+    partial class AllGroupsTest4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,8 +27,8 @@ namespace MessageBoardApi.Migrations
 
                     b.Property<string>("GroupName")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4");
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20) CHARACTER SET utf8mb4");
 
                     b.HasKey("GroupId");
 

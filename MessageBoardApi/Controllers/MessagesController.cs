@@ -22,12 +22,13 @@ namespace MessageBoardApi.Controllers
     [HttpGet]
     public ActionResult<IEnumerable<Message>> Get(string group, string content, bool allGroups)
     {
+
     var query = _db.Messages.AsQueryable();
 
-    if (group != null)
-    {
-    query = query.Where(entry => entry.Group == group);
-    }
+    // if (group != null)
+    // {
+    //   query = query.Where(entry => entry.Group == group);
+    // }
 
     // if (datePosted != null)
     // {
@@ -39,13 +40,14 @@ namespace MessageBoardApi.Controllers
     query = query.Where(entry => entry.Content == content);
     }
 
-    if (allGroups) 
-    {
-      query = query.Distinct();
-      query = from entry in query 
-          orderby entry.Group 
-          select entry;
-    }
+    // if (allGroups) 
+    // {
+    //   query = query.Distinct();
+    //   query = from entry in query 
+    //       orderby entry.Group 
+    //       select entry;
+    // }
+
 
     return query.ToList();
     }
