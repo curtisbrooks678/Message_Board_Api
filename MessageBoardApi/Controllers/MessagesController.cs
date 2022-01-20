@@ -20,7 +20,7 @@ namespace MessageBoardApi.Controllers
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<Message>> Get(int groupId, string content)
+    public ActionResult<IEnumerable<Message>> Get([FromQuery]int groupId, [FromQuery]string content)
     {
 
     var query = _db.Messages.AsQueryable();
@@ -53,7 +53,7 @@ namespace MessageBoardApi.Controllers
     }
 
     [HttpPost]
-    public async Task<ActionResult<Message>> Post(Message message)
+    public async Task<ActionResult<Message>> Post([FromBody]Message message)
     {
       _db.Messages.Add(message);
       await _db.SaveChangesAsync();
@@ -62,7 +62,7 @@ namespace MessageBoardApi.Controllers
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Message>> GetMessage(int id)
+    public async Task<ActionResult<Message>> GetMessage([FromQuery]int id)
     {
         var message = await _db.Messages.FindAsync(id);
 
@@ -75,7 +75,7 @@ namespace MessageBoardApi.Controllers
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Put(int id, Message message)
+    public async Task<IActionResult> Put([FromQuery]int id, [FromBody]Message message)
     {
       if (id != message.MessageId)
       {
@@ -108,7 +108,7 @@ namespace MessageBoardApi.Controllers
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteMessage(int id)
+    public async Task<IActionResult> DeleteMessage([FromQuery]int id)
     {
       var message = await _db.Messages.FindAsync(id);
       if (message == null)

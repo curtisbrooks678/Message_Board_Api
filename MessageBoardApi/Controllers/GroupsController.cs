@@ -20,7 +20,7 @@ namespace MessageBoardApi.Controllers
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<Group>> Get(string groupName)
+    public ActionResult<IEnumerable<Group>> Get([FromQuery]string groupName)
     {
 
     var query = _db.Groups.AsQueryable();
@@ -44,7 +44,7 @@ namespace MessageBoardApi.Controllers
     }
 
     [HttpPost]
-    public async Task<ActionResult<Group>> Post(Group group)
+    public async Task<ActionResult<Group>> Post([FromBody]Group group)
     {
       _db.Groups.Add(group);
       await _db.SaveChangesAsync();
@@ -53,7 +53,7 @@ namespace MessageBoardApi.Controllers
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Group>> GetGroup(int id)
+    public async Task<ActionResult<Group>> GetGroup([FromQuery]int id)
     {
         var group = await _db.Groups.FindAsync(id);
 
@@ -66,7 +66,7 @@ namespace MessageBoardApi.Controllers
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Put(int id, Group group)
+    public async Task<IActionResult> Put([FromQuery]int id, [FromBody]Group group)
     {
       if (id != group.GroupId)
       {
@@ -99,7 +99,7 @@ namespace MessageBoardApi.Controllers
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteGroup(int id)
+    public async Task<IActionResult> DeleteGroup([FromQuery]int id)
     {
       var group = await _db.Groups.FindAsync(id);
       if (group == null)
